@@ -1,0 +1,150 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: transparent;
+    transition: background 0.3s, box-shadow 0.3s;
+    z-index: 999;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(6px);
+}
+
+/* Nav links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+
+/* Hover underline */
+.nav-links li a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    left: 0;
+    bottom: -4px;
+    background: #ff9800;
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* Active link */
+.nav-links li a.active {
+    color: #00ffff;
+}
+
+/* Hamburger icon */
+.menu-icon {
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 10px;
+        display: none;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+}
+
+/* Section Styles */
+.section {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Heading and paragraph styling */
+.section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.section p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: white;
+    max-width: 700px;
+    padding: 0 20px;
+}
+
+/* Background colors */
+.hero { background: linear-gradient(135deg, #667eea, #764ba2); }
+.about { background: linear-gradient(135deg, #ff6a00, #ee0979); }
+.services { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+.contact { background: linear-gradient(135deg, #43cea2, #185a9d); }
+
+/* Animation for h1 & p */
+.section h1,
+.section p {
+    opacity: 0;
+    transform: translateX(-100px) rotate(-15deg);
+    transition: all 1s ease;
+}
+
+/* Show animation */
+.section.show h1,
+.section.show p {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+}
